@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f1f1f1;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      background-color: #4285f4;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>Google Search</h2>
+  <form onsubmit="searchGoogle(); return false;">
+    <input type="text" id="searchBox" placeholder="Search Google..." />
+    <br>
+    <button type="submit">Search</button>
+  </form>
+
+  <script>
+    function searchGoogle() {
+      const query = document.getElementById('searchBox').value;
+      window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    }
+  </script>
+</body>
+</html>
